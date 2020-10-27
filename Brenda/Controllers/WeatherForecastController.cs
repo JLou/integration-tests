@@ -6,21 +6,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Brenda.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/weather-forecast")]
     [Authorize]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly BrendaContext _context;
         private readonly IJokeProvider _jokeProvider;
@@ -33,25 +29,25 @@ namespace Brenda.Controllers
             _jokeProvider = jokeProvider;
         }
 
-        [HttpGet]
+        [HttpGet("")]
         public async Task<IEnumerable<WeatherForecast>> GetAsync()
         {
-            var rng = new Random();
+            Random rng = new Random();
 
             var jokesTasks = _jokeProvider.GetJokes(25);
-            var forecastTasks = _context.Forecasts.Select(f => new WeatherForecast
-            {
-                Date = f.Date,
-                TemperatureC = f.TemperatureC,
-            })
-            .OrderBy(f => f.Date)
-            .Take(25)
-            .ToArrayAsync();
+            var forecastTasks = _context.Forecasts
+                .OrderBy(f => f.Date)
+                .Take(25)
+                .ToArrayAsync();
 
             var jokes = await jokesTasks;
             var forecasts = await forecastTasks;
 
-            return forecasts.Zip(jokes, (WeatherForecast f, string j) => { f.Summary = j; return f; });
+            return forecasts.Select(f => new WeatherForecast
+            {
+                Date = f.Date.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+                TemperatureC = f.TemperatureC,
+            }).Zip(jokes, (WeatherForecast f, string j) => { f.Summary = j; return f; });
         }
     }
 }

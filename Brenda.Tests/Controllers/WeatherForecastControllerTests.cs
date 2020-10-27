@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -49,7 +50,7 @@ namespace Brenda.Tests
             foreach (var item in result)
             {
                 Assert.Equal(jokes[i], item.Summary);
-                Assert.Equal(forecasts[i].Date, item.Date);
+                Assert.Equal(forecasts[i].Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), item.Date);
                 Assert.Equal(forecasts[i].TemperatureC, item.TemperatureC);
                 i++;
             }
