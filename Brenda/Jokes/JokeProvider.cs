@@ -19,7 +19,7 @@ namespace Brenda.Jokes
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
 
-            var tasks = Enumerable.Range(0, number).Select(i => GetSingleJoke(client));
+            var tasks = Enumerable.Range(0, number).Select(i => this.GetSingleJoke(client));
             return await Task.WhenAll(tasks);
         }
 

@@ -34,17 +34,19 @@ namespace Brenda
             }).AddCookie("Cookies")
             .AddOpenIdConnect("oidc", options =>
             {
-                options.Authority = "https://demo.identityserver.io";
+                options.Authority = "https://demo.identityserver.io/";
                 options.BackchannelHttpHandler = new HttpClientHandler
                 {
                     Proxy = webProxy,
                 };
-                options.RequireHttpsMetadata = false;
                 // name of the API resource
-                options.ClientId = "implicit";
-                //options.ResponseType = "id_token";
-                options.SaveTokens = true;
 
+                options.ClientId = "interactive.public.short";
+                options.ClientSecret = "secret";
+                options.ResponseType = "code";
+                options.SaveTokens = true;
+                options.UsePkce = true;
+                options.Scope.Add("openid");
             });
             services.AddHttpClient("with-proxy")
                     .ConfigurePrimaryHttpMessageHandler(() =>
@@ -54,8 +56,6 @@ namespace Brenda
                             Proxy = webProxy,
                         };
                     });
-
-
             services.AddTransient<IJokeProvider, JokeProvider>();
             services.AddControllers();
         }

@@ -35,7 +35,7 @@ namespace Brenda.Tests
         public async Task ShouldReturnForecast()
         {
             Fixture fixture = new Fixture();
-            var q = new List<Forecast>(fixture.CreateMany<Forecast>(25));
+            List<Forecast> q = new List<Forecast>(fixture.CreateMany<Forecast>(25));
             var jokes = fixture.CreateMany<string>(25).ToArray();
             _context.Forecasts.AddRange(q);
             _context.SaveChanges();
@@ -44,7 +44,7 @@ namespace Brenda.Tests
             var result = await _controller.GetAsync();
 
             //Assert
-            int i = 0;
+            var i = 0;
             var forecasts = q.ToArray();
             foreach (var item in result)
             {
