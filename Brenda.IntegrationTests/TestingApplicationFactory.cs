@@ -21,7 +21,19 @@ namespace Brenda.IntegrationTests
     public class TestingApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup> where TStartup : class
     {
+        private const string DatabaseName = "InMemoryDbForTesting";
+
         internal StubMessageHandler HttpMessageHandler { get; } = new StubMessageHandler();
+
+        public BrendaContext Context {
+            get {
+                var options = new DbContextOptionsBuilder<BrendaContext>()
+                    .UseInMemoryDatabase(DatabaseName)
+                    .Options;
+
+                return new BrendaContext(options);
+            }
+        }
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -34,7 +46,7 @@ namespace Brenda.IntegrationTests
                 services.Remove(descriptor);
                 services.AddDbContext<BrendaContext>(options =>
                 {
-                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                    options.UseInMemoryDatabase(DatabaseName);
                 });
 
                 services.AddHttpClient("with-proxy").ConfigurePrimaryHttpMessageHandler(() => HttpMessageHandler);
@@ -60,7 +72,6 @@ namespace Brenda.IntegrationTests
                             "database with test messages. Error: {Message}", ex.Message);
                     }
                 }
-
             });
         }
 
@@ -95,17 +106,19 @@ namespace Brenda.IntegrationTests
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            var claims = new[] { new Claim(ClaimTypes.Name, "Test user") };
-            ClaimsIdentity identity = new ClaimsIdentity(claims, "Test");
-            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-            AuthenticationTicket ticket = new AuthenticationTicket(principal, "Test");
+            if (Context.Request.Headers["Authorization"] == "test")
+            {
+                var claims = new[] { new Claim(ClaimTypes.Name, "Test user") };
+                ClaimsIdentity identity = new ClaimsIdentity(claims, "Test");
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                AuthenticationTicket ticket = new AuthenticationTicket(principal, "Test");
 
-            AuthenticateResult result = AuthenticateResult.Success(ticket);
+                AuthenticateResult result = AuthenticateResult.Success(ticket);
 
-            return Task.FromResult(result);
+                return Task.FromResult(result);
+            }
+            return Task.FromResult(AuthenticateResult.NoResult());
+
         }
     }
-
-
-
 }

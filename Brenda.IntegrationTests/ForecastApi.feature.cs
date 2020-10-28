@@ -19,7 +19,7 @@ namespace Brenda.IntegrationTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class JokeFeature : object, Xunit.IClassFixture<JokeFeature.FixtureData>, System.IDisposable
+    public partial class ForecastApiFeature : object, Xunit.IClassFixture<ForecastApiFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Brenda.IntegrationTests
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Forecast.feature"
+#line 1 "ForecastApi.feature"
 #line hidden
         
-        public JokeFeature(JokeFeature.FixtureData fixtureData, Brenda_IntegrationTests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ForecastApiFeature(ForecastApiFeature.FixtureData fixtureData, Brenda_IntegrationTests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,7 @@ namespace Brenda.IntegrationTests
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Joke", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "ForecastApi", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,22 +75,70 @@ namespace Brenda.IntegrationTests
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 3
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "ID",
+                        "Date",
+                        "TemperatureC"});
+            table4.AddRow(new string[] {
+                        "1",
+                        "2020-05-01",
+                        "20"});
+            table4.AddRow(new string[] {
+                        "2",
+                        "2020-01-01",
+                        "15"});
+            table4.AddRow(new string[] {
+                        "3",
+                        "2020-03-01",
+                        "17"});
+            table4.AddRow(new string[] {
+                        "4",
+                        "2020-02-01",
+                        "16"});
+            table4.AddRow(new string[] {
+                        "5",
+                        "2020-06-01",
+                        "21"});
+#line 4
+ testRunner.Given("I know about the following forecast", ((string)(null)), table4, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "joke"});
+            table5.AddRow(new string[] {
+                        "joke1"});
+            table5.AddRow(new string[] {
+                        "joke2"});
+            table5.AddRow(new string[] {
+                        "joke3"});
+            table5.AddRow(new string[] {
+                        "joke4"});
+            table5.AddRow(new string[] {
+                        "joke5"});
+            table5.AddRow(new string[] {
+                        "joke6"});
+#line 11
+ testRunner.And("And my joke provider will give me these jokes in order", ((string)(null)), table5, "And ");
+#line hidden
+        }
+        
         void System.IDisposable.Dispose()
         {
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Forecast for 3 days")]
-        [Xunit.TraitAttribute("FeatureTitle", "Joke")]
-        [Xunit.TraitAttribute("Description", "Forecast for 3 days")]
-        [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void ForecastFor3Days()
+        [Xunit.SkippableFactAttribute(DisplayName="Authenticated user")]
+        [Xunit.TraitAttribute("FeatureTitle", "ForecastApi")]
+        [Xunit.TraitAttribute("Description", "Authenticated user")]
+        public virtual void AuthenticatedUser()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecast for 3 days", null, tagsOfScenario, argumentsOfScenario);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Authenticated user", null, tagsOfScenario, argumentsOfScenario);
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,83 +158,94 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "ID",
-                            "Date",
-                            "TemperatureC"});
-                table1.AddRow(new string[] {
-                            "1",
-                            "2020-05-01",
-                            "20"});
-                table1.AddRow(new string[] {
-                            "2",
-                            "2020-01-01",
-                            "15"});
-                table1.AddRow(new string[] {
-                            "3",
-                            "2020-03-01",
-                            "17"});
-                table1.AddRow(new string[] {
-                            "4",
-                            "2020-02-01",
-                            "16"});
-                table1.AddRow(new string[] {
-                            "5",
-                            "2020-06-01",
-                            "21"});
-#line 8
- testRunner.Given("I know about the following forecast", ((string)(null)), table1, "Given ");
+#line 3
+this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "joke"});
-                table2.AddRow(new string[] {
-                            "joke1"});
-                table2.AddRow(new string[] {
-                            "joke2"});
-                table2.AddRow(new string[] {
-                            "joke3"});
-                table2.AddRow(new string[] {
-                            "joke4"});
-                table2.AddRow(new string[] {
-                            "joke5"});
-#line 15
- testRunner.And("And my joke provider has given me these jokes", ((string)(null)), table2, "And ");
+#line 21
+ testRunner.Given("I am authenticated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
  testRunner.When("I ask Brenda for a forecast", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+#line 23
+ testRunner.Then("My api returns a 200 status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Date",
                             "TemperatureC",
                             "TemperatureF",
                             "Summary"});
-                table3.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "2020-01-01",
                             "15",
                             "58",
                             "joke1"});
-                table3.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "2020-02-01",
                             "16",
                             "60",
                             "joke2"});
-                table3.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "2020-03-01",
                             "17",
                             "62",
                             "joke3"});
-                table3.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "2020-05-01",
                             "20",
                             "67",
                             "joke4"});
-                table3.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "2020-06-01",
                             "21",
                             "69",
                             "joke5"});
-#line 23
- testRunner.Then("the results are", ((string)(null)), table3, "Then ");
+#line 24
+ testRunner.And("the results are", ((string)(null)), table6, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Anonymous call")]
+        [Xunit.TraitAttribute("FeatureTitle", "ForecastApi")]
+        [Xunit.TraitAttribute("Description", "Anonymous call")]
+        public virtual void AnonymousCall()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Anonymous call", null, tagsOfScenario, argumentsOfScenario);
+#line 32
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 33
+ testRunner.Given("I am not authenticated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 34
+ testRunner.When("I ask Brenda for a forecast", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 35
+ testRunner.Then("My api returns a 302 status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -200,12 +258,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                JokeFeature.FeatureSetup();
+                ForecastApiFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                JokeFeature.FeatureTearDown();
+                ForecastApiFeature.FeatureTearDown();
             }
         }
     }

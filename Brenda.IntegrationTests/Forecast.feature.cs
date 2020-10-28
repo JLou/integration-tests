@@ -19,12 +19,14 @@ namespace Brenda.IntegrationTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [Xunit.TraitAttribute("Category", "ignore")]
     public partial class JokeFeature : object, Xunit.IClassFixture<JokeFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "ignore"};
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
@@ -41,7 +43,8 @@ namespace Brenda.IntegrationTests
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Joke", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "f two numbers", ProgrammingLanguage.CSharp, new string[] {
+                        "ignore"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -84,14 +87,14 @@ namespace Brenda.IntegrationTests
         [Xunit.SkippableFactAttribute(DisplayName="Forecast for 3 days")]
         [Xunit.TraitAttribute("FeatureTitle", "Joke")]
         [Xunit.TraitAttribute("Description", "Forecast for 3 days")]
-        [Xunit.TraitAttribute("Category", "mytag")]
+        [Xunit.TraitAttribute("Category", "ignore")]
         public virtual void ForecastFor3Days()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Forecast for 3 days", null, tagsOfScenario, argumentsOfScenario);
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -135,7 +138,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "5",
                             "2020-06-01",
                             "21"});
-#line 8
+#line 9
  testRunner.Given("I know about the following forecast", ((string)(null)), table1, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -150,10 +153,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "joke4"});
                 table2.AddRow(new string[] {
                             "joke5"});
-#line 15
+#line 16
  testRunner.And("And my joke provider has given me these jokes", ((string)(null)), table2, "And ");
 #line hidden
-#line 22
+#line 23
  testRunner.When("I ask Brenda for a forecast", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -186,7 +189,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "21",
                             "69",
                             "joke5"});
-#line 23
+#line 24
  testRunner.Then("the results are", ((string)(null)), table3, "Then ");
 #line hidden
             }

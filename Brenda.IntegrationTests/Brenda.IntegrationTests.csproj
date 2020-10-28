@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="Forecast - Copy.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.9" />
@@ -31,12 +35,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ForecastApi.feature.cs">
+      <DependentUpon>ForecastApi.feature</DependentUpon>
+    </Compile>
     <Compile Update="Forecast.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="ForecastApi.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+      <LastGenOutput>Forecast.feature.cs</LastGenOutput>
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Forecast.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Forecast.feature.cs</LastGenOutput>
